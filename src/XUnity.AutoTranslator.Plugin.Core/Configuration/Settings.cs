@@ -91,6 +91,7 @@ namespace XUnity.AutoTranslator.Plugin.Core.Configuration
       public static bool EnableTextMeshPro;
       public static bool EnableTextMesh;
       public static bool EnableFairyGUI;
+      public static bool EnableUtage;
       public static bool InitializeHarmonyDetourBridge;
       public static bool IgnoreWhitespaceInDialogue;
       public static int MinDialogueChars;
@@ -234,6 +235,7 @@ namespace XUnity.AutoTranslator.Plugin.Core.Configuration
             EnableTextMeshPro = PluginEnvironment.Current.Preferences.GetOrDefault( "TextFrameworks", "EnableTextMeshPro", true );
             EnableTextMesh = PluginEnvironment.Current.Preferences.GetOrDefault( "TextFrameworks", "EnableTextMesh", false );
             EnableFairyGUI = PluginEnvironment.Current.Preferences.GetOrDefault( "TextFrameworks", "EnableFairyGUI", true );
+            EnableUtage = PluginEnvironment.Current.Preferences.GetOrDefault( "TextFrameworks", "EnableUtage", true );
 
             MaxCharactersPerTranslation = PluginEnvironment.Current.Preferences.GetOrDefault( "Behaviour", "MaxCharactersPerTranslation", 200 );
             IgnoreWhitespaceInDialogue = PluginEnvironment.Current.Preferences.GetOrDefault( "Behaviour", "IgnoreWhitespaceInDialogue", true );

@@ -150,7 +150,10 @@ namespace XUnity.AutoTranslator.Plugin.Core.Hooks
 
          try
          {
-            HookingHelper.PatchAll( UtageHooks.All, Settings.ForceMonoModHooks );
+            if( Settings.EnableUtage )
+            {
+               HookingHelper.PatchAll( UtageHooks.All, Settings.ForceMonoModHooks );
+            }
          }
          catch( Exception e )
          {
