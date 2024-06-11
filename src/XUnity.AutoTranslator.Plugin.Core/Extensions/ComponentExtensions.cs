@@ -123,7 +123,7 @@ namespace XUnity.AutoTranslator.Plugin.Core.Extensions
          if( ui is Component component && component )
          {
             var go = component.gameObject;
-            var ignore = go.HasIgnoredName();
+            var ignore = go.HasIgnoredName() || go.HasIgnoredPath();
             if( ignore )
             {
                return true;
@@ -615,6 +615,19 @@ namespace XUnity.AutoTranslator.Plugin.Core.Extensions
       {
          var go = GetAssociatedGameObject( ui );
          return go.name.Contains( XuaIgnore );
+      }
+
+      public static bool HasIgnoredPath( this object ui )
+      {
+         var go = GetAssociatedGameObject( ui );
+         var path = go.GetPath();
+         foreach (string ignorePath in Settings.IgnoreObjectPathsStartingWith ) {
+            if ( path.StartsWith(ignorePath) )
+            {
+               return true;
+            }
+         }
+         return false;
       }
 
       public static Texture2D GetTexture( this object ui )

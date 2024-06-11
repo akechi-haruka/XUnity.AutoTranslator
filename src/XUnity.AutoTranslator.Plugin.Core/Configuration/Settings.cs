@@ -110,6 +110,7 @@ namespace XUnity.AutoTranslator.Plugin.Core.Configuration
       public static float? ResizeUILineSpacingScale;
       public static bool ForceUIResizing;
       public static string[] IgnoreTextStartingWith;
+      public static string[] IgnoreObjectPathsStartingWith;
       public static HashSet<string> GameLogTextPaths;
       public static bool TextGetterCompatibilityMode;
       public static TextPostProcessing RomajiPostProcessing;
@@ -254,6 +255,8 @@ namespace XUnity.AutoTranslator.Plugin.Core.Configuration
             ResizeUILineSpacingScale = PluginEnvironment.Current.Preferences.GetOrDefault<float?>( "Behaviour", "ResizeUILineSpacingScale", null );
             ForceUIResizing = PluginEnvironment.Current.Preferences.GetOrDefault( "Behaviour", "ForceUIResizing", false );
             IgnoreTextStartingWith = PluginEnvironment.Current.Preferences.GetOrDefault( "Behaviour", "IgnoreTextStartingWith", "\\u180e;" )
+               ?.Split( new[] { ';' }, StringSplitOptions.RemoveEmptyEntries ).Select( x => JsonHelper.Unescape( x ) ).ToArray() ?? new string[ 0 ];
+            IgnoreObjectPathsStartingWith = PluginEnvironment.Current.Preferences.GetOrDefault( "Behaviour", "IgnoreObjectPathsStartingWith", "" )
                ?.Split( new[] { ';' }, StringSplitOptions.RemoveEmptyEntries ).Select( x => JsonHelper.Unescape( x ) ).ToArray() ?? new string[ 0 ];
             TextGetterCompatibilityMode = PluginEnvironment.Current.Preferences.GetOrDefault( "Behaviour", "TextGetterCompatibilityMode", false );
             GameLogTextPaths = PluginEnvironment.Current.Preferences.GetOrDefault( "Behaviour", "GameLogTextPaths", string.Empty )
