@@ -77,7 +77,9 @@ namespace XUnity.AutoTranslator.Plugin.Core.Hooks
 
       static void Prefix( ref int value )
       {
-         value = -1;
+         if( Settings.UtageLengthOfViewHook ) {
+            value = -1;
+         }
       }
 
 #if MANAGED
